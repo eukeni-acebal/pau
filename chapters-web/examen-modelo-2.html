@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>El modelo oficial II, resuelto y comentado – Historia de la Filosofía</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters-web/examen-modelo-1.html" rel="next">
+<link href="../chapters-web/examen-extraordinaria-2026.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b7eae173dd9acb1693931f0d737955e4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8844d5f7d9f77201dfdabae81953214c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b7eae173dd9acb1693931f0d737955e4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../quarto-theme/print.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-5.html">Parte V · Exámenes resueltos</a></li><li class="breadcrumb-item"><a href="../chapters-web/examen-modelo-2.html"><span class="chapter-title">El modelo oficial II, resuelto y comentado</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Historia de la Filosofía</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/eukeni-acebal/pau" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Historia de la Filosofía</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/intro-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parte-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parte I · La prueba</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cómo funciona la prueba</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cómo se corrige</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parte-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parte II · Métodos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El resumen y la estructura argumental</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La comparación entre autores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La explicación de una afirmación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La disertación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La explicación argumentada de un tema</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parte-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parte III · Las cinco lecturas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Platón: <em>República</em>, libro VII</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Descartes: <em>Discurso del método</em>, partes II, III y IV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Kant: <em>¿Qué es la Ilustración?</em></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Nietzsche: <em>Ecce Homo</em>, «Por qué soy un destino»</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/capitulo-12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Beauvoir: <em>El segundo sexo</em>, «Conclusión»</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parte-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parte IV · Aparato comparativo</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/apendice-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Perspectivas enfrentadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/apendice-cross-bloque.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Comparar a través de los bloques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/grafos-relaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Los grafos de relaciones</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../parte-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parte V · Exámenes resueltos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/examen-ordinaria-2026.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La ordinaria de 2026, resuelta y comentada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/examen-extraordinaria-2026.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La extraordinaria de 2026, resuelta y comentada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/examen-modelo-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">El modelo oficial II, resuelto y comentado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/examen-modelo-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El modelo oficial I, resuelto y comentado</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters-web/glosario-autores.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Glosario por autor</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#antes-de-empezar-estos-enunciados-son-traducción-nuestra" id="toc-antes-de-empezar-estos-enunciados-son-traducción-nuestra" class="nav-link active" data-scroll-target="#antes-de-empezar-estos-enunciados-son-traducción-nuestra">Antes de empezar: estos enunciados son traducción nuestra</a></li>
+  <li><a href="#el-texto" id="toc-el-texto" class="nav-link" data-scroll-target="#el-texto">El texto</a></li>
+  <li><a href="#el-resumen" id="toc-el-resumen" class="nav-link" data-scroll-target="#el-resumen">1.1 · El resumen</a></li>
+  <li><a href="#a-la-comparación-y-por-qué-va-en-dos-niveles" id="toc-a-la-comparación-y-por-qué-va-en-dos-niveles" class="nav-link" data-scroll-target="#a-la-comparación-y-por-qué-va-en-dos-niveles">1.2.A · La comparación, y por qué va en dos niveles</a></li>
+  <li><a href="#a-la-respuesta-de-10" id="toc-a-la-respuesta-de-10" class="nav-link" data-scroll-target="#a-la-respuesta-de-10">1.2.A · La respuesta de 10</a></li>
+  <li><a href="#a-la-respuesta-de-7" id="toc-a-la-respuesta-de-7" class="nav-link" data-scroll-target="#a-la-respuesta-de-7">1.2.A · La respuesta de 7</a></li>
+  <li><a href="#b-la-explicación" id="toc-b-la-explicación" class="nav-link" data-scroll-target="#b-la-explicación">1.2.B · La explicación</a></li>
+  <li><a href="#la-disertación" id="toc-la-disertación" class="nav-link" data-scroll-target="#la-disertación">2 · La disertación</a></li>
+  <li><a href="#a-la-crisis-de-la-polis-y-la-ética-helenística" id="toc-a-la-crisis-de-la-polis-y-la-ética-helenística" class="nav-link" data-scroll-target="#a-la-crisis-de-la-polis-y-la-ética-helenística">3.A · La crisis de la polis y la ética helenística</a></li>
+  <li><a href="#b-los-maestros-de-la-sospecha" id="toc-b-los-maestros-de-la-sospecha" class="nav-link" data-scroll-target="#b-los-maestros-de-la-sospecha">3.B · Los maestros de la sospecha</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-5.html">Parte V · Exámenes resueltos</a></li><li class="breadcrumb-item"><a href="../chapters-web/examen-modelo-2.html"><span class="chapter-title">El modelo oficial II, resuelto y comentado</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">El modelo oficial II, resuelto y comentado</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>El examen que la EHU publicó para enseñar cómo iba a ser el nuevo. No se hizo nunca, no lo corrigió nadie y aun así es el documento más útil de los cuatro, porque viene con las instrucciones de quien lo diseñó. Aquí va resuelto entero, con la comparación escrita dos veces —al nivel de 10 y al de 7— para que veas qué añade la elaboración sobre una respuesta que ya era correcta.</em></p>
+<section id="antes-de-empezar-estos-enunciados-son-traducción-nuestra" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-empezar-estos-enunciados-son-traducción-nuestra">Antes de empezar: estos enunciados son traducción nuestra</h2>
+<p><strong>Los dos modelos oficiales de 2026 solo existen en euskera, y conviene que sepas por qué.</strong> La EHU publicó modelos bilingües hasta 2025 y avisó entonces de que los cambios menores posteriores no se reflejarían en un modelo nuevo. El que tienes delante llegó a los centros por la red de institutos y no por la web pública, y de su versión castellana no hay rastro en ninguna parte: lo más probable es que no llegue a haberse escrito.</p>
+<p><strong>Consecuencia práctica, dicha sin rodeos.</strong> Los enunciados de este capítulo y los del modelo I, incluidas las «Argibideak» que cierran el libro, <strong>los hemos traducido nosotros del euskera</strong>. No son texto oficial castellano y no debes citarlos como si lo fueran. Lo que sí es oficial y no está traducido es el texto de Descartes: ese lo tomamos de la antología canónica de 2026, que es la que tú lees.</p>
+</section>
+<section id="el-texto" class="level2">
+<h2 class="anchored" data-anchor-id="el-texto">El texto</h2>
+<p>Descartes (1596-1650), <em>Discurso del método</em>, cuarta parte. Fue texto único: no había otra opción.</p>
+<blockquote class="blockquote">
+<p>No sé si debo hablaros de las primeras meditaciones que hice allí, pues son tan metafísicas y tan fuera de lo común, que quizá no gusten a todo el mundo. Sin embargo, para que se pueda apreciar si los fundamentos que he tomado son bastante firmes, me veo en cierta manera obligado a decir algo de esas reflexiones. Tiempo ha que había advertido que, en lo tocante a las costumbres, es a veces necesario seguir opiniones que sabemos muy inciertas, como si fueran indudables, y esto se ha dicho ya en la parte anterior; pero, deseando yo en esta ocasión ocuparme tan solo de indagar la verdad, pensé que debía hacer lo contrario y rechazar como absolutamente falso todo aquello en que pudiera imaginar la menor duda, con el fin de ver si, después de hecho esto, no quedaría en mi creencia algo que fuera enteramente indudable. Así, puesto que los sentidos nos engañan, a las veces, quise suponer que no hay cosa alguna que sea tal y como ellos nos la presentan en la imaginación; y puesto que hay hombres que yerran al razonar, aun acerca de los más simples asuntos de geometría, y cometen paralogismos, juzgué que yo estaba tan expuesto al error como otro cualquiera, y rechacé como falsas todas las razones que anteriormente había tenido por demostrativas; y, en fin, considerando que todos los pensamientos que nos vienen estando despiertos pueden también ocurrírsenos durante el sueño, sin que ninguno entonces sea verdadero, resolví fingir que todas las cosas, que hasta entonces habían entrado en mi espíritu, no eran más verdaderas que las ilusiones de mis sueños. Pero advertí luego que, queriendo yo pensar, de esa suerte, que todo es falso, era necesario que yo, que lo pensaba, fuese alguna cosa; y observando que esta verdad: «yo pienso, luego soy», era tan firme y segura que las más extravagantes suposiciones de los escépticos no son capaces de conmoverla, juzgué que podía recibirla sin escrúpulo, como el primer principio de la filosofía que andaba buscando.</p>
+</blockquote>
+<p><strong>Es el párrafo vecino del que puso la ordinaria de 2026, y esa vecindad enseña algo.</strong> El de la convocatoria empieza justo donde este acaba: aquí Descartes llega al «yo pienso, luego soy» y allí se pregunta qué era él. La prueba ha recortado el mismo pasaje por dos sitios distintos, de modo que quien preparó el <em>cogito</em> aislado tiene la mitad del argumento y le falta la otra mitad, que es la que explica de dónde sale. Los dos están analizados en el capítulo 9, el primero y el tercero de los tres fragmentos de este autor.</p>
+<p><strong>Un detalle de edición que conviene que veas.</strong> En tu antología, este párrafo lleva una nota del editor que remite a las <em>Meditaciones metafísicas</em>. El examen no la trae, y aquí tampoco: cuando la prueba recorta un texto, se queda con el texto y no con el aparato de quien lo editó.</p>
+</section>
+<section id="el-resumen" class="level2">
+<h2 class="anchored" data-anchor-id="el-resumen">1.1 · El resumen</h2>
+<p><strong>El enunciado.</strong> «Resuma el pasaje, respetando las ideas del texto y las conexiones entre ellas.» Un punto.</p>
+<blockquote class="blockquote">
+<p>El pasaje no cuenta lo que Descartes dudó: justifica una regla y la pone a prueba. Empieza avisando de que lo que viene es metafísico y quizá no guste, y dice acto seguido por qué lo cuenta de todas formas, y es que sin ver los cimientos nadie puede juzgar si el edificio se sostiene. Separa entonces dos terrenos que no se gobiernan igual: para vivir hay que seguir a veces opiniones inciertas como si fueran seguras, mientras que para indagar la verdad hay que hacer exactamente lo contrario. De esa separación sale la regla, que es rechazar como absolutamente falso todo aquello en que quepa imaginar la menor duda, y que llega con su finalidad puesta: no afirmar que todo sea falso, sino ver si algo resiste el trato. La aplica tres veces y en escala creciente, porque cada golpe se lleva por delante al anterior: los sentidos, que a veces engañan; el razonamiento, que yerra hasta en geometría; y la vigilia entera, que podría ser sueño. Una sola cosa resiste, y resiste desde dentro, ya que para pensar que todo es falso hace falta ser quien lo piensa. Y el pasaje no termina en esa certeza, sino en el uso que le da: recibirla como el primer principio de la filosofía que andaba buscando.</p>
+</blockquote>
+<p><strong>Doscientas dieciséis palabras contra las trescientas treinta y siete del texto, y la decisión está toda en la primera línea.</strong> Decir qué hace el pasaje antes de decir qué dice es lo que convierte un recorrido en un resumen con estructura argumental. Fíjate en dónde se separa de la mayoría: casi nadie recoge el arranque —la disculpa y su justificación— porque parece cortesía, y es la razón de que el párrafo exista; y casi nadie recoge el final —la elevación a principio— porque la certeza ya ha aparecido y el resumen se da por terminado. Sin esas dos puntas, lo que queda es un episodio de dudas.</p>
+<p><strong>Este mismo texto está resumido, de otra manera, en el capítulo 3.</strong> Allí es el primero de los dos resúmenes desarrollados y conserva el orden del relato, porque en una demostración el orden es el argumento; aquí el hilo lo lleva la función de cada tramo. <strong>Las dos son de banda alta, y la comparación entre ellas es el ejercicio.</strong> Lo que ninguna de las dos hace es contar lo que pasa. Método en el capítulo 3; el paso a paso del fragmento, en el capítulo 9.</p>
+</section>
+<section id="a-la-comparación-y-por-qué-va-en-dos-niveles" class="level2">
+<h2 class="anchored" data-anchor-id="a-la-comparación-y-por-qué-va-en-dos-niveles">1.2.A · La comparación, y por qué va en dos niveles</h2>
+<p><strong>El enunciado.</strong> «Establezca una comparación crítica entre el tema principal del texto y el racionalismo y el empirismo.» Tres puntos, doscientas cincuenta palabras como máximo.</p>
+<p>Aquí va el par de este examen, el 10 y el 7, y la pregunta que tienes que llevarte de él es qué añade la elaboración sobre una respuesta que ya era correcta. Porque la de 7 lo es: no tiene un error, no le falta información y está mejor escrita que la media. Lo que le falta es haber contestado a esta pregunta y no a otra.</p>
+<p><strong>Y una diferencia de este enunciado que conviene ver antes.</strong> Los otros tres exámenes te dan nombres —Kant, Nietzsche, Beauvoir, Gouges, Wollstonecraft—; este te da dos corrientes. Eso parece más cómodo y es más traicionero, porque invita a contar las dos corrientes, que es justamente lo que no se pide. El destino sigue siendo un cruce con el texto y no una exposición.</p>
+<p><strong>Recuerda con qué se corrige.</strong> Cinco ejes, combinados por bandas y no sumados por separado: comprensión del texto y del asunto, calidad de la comparación, vocabulario filosófico, estructura argumentativa y gramática. La banda alta pide una comparación «crítica, matizada y filosóficamente significativa» (capítulo 2).</p>
+</section>
+<section id="a-la-respuesta-de-10" class="level2">
+<h2 class="anchored" data-anchor-id="a-la-respuesta-de-10">1.2.A · La respuesta de 10</h2>
+<blockquote class="blockquote">
+<p>El texto no discute cuánto sabemos, sino qué puede servir de punto de partida. Descartes lo resuelve con un criterio durísimo: vale como cimiento lo que resiste la duda más extravagante, y por eso descarta los sentidos —fíjate en la razón, que no es que engañen siempre, sino que engañan «a las veces», y para su propósito con eso basta—. El empirismo invierte el criterio, no la pregunta. Locke abre su <em>Ensayo sobre el entendimiento humano</em> negando que haya ideas innatas: la mente no trae nada y todo lo escribe la experiencia. Hume aprieta la tuerca con el principio de que toda idea procede de una impresión anterior, de modo que aquello de lo que no hay impresión no es conocimiento sino palabra. Y aquí está lo que hace interesante el cruce, porque no es un choque frontal: el empirismo hereda el método cartesiano y le cambia el contenido. También Hume parte de lo que se da inmediatamente a la conciencia y desconfía del resto; lo que discute es qué es lo inmediato. Para Descartes es un pensamiento que garantiza a quien lo piensa; para el empirista es una impresión que no garantiza nada más allá de sí misma. Cada uno paga por ello: Descartes compra certeza y se queda debiendo el mundo, que tendrá que recuperar después; el empirismo conserva el mundo y pierde la necesidad. No discrepan sobre cuánto puede saberse, sino sobre qué es un fundamento.</p>
+</blockquote>
+<p><strong>Doscientas treinta y nueve palabras, y mira qué es lo que las gana.</strong> No la información, que la de 7 también tiene, sino tres decisiones. La primera, nombrar el problema en la línea uno y nombrarlo bien: el texto va del punto de partida, no del origen del conocimiento en general. La segunda, aterrizar en el texto —el «a las veces» es una palabra suya y sostiene medio argumento—. La tercera, y es la que da la banda alta, reconocer un parentesco donde se esperaba una guerra: eso es exactamente lo que la rúbrica llama matizar.</p>
+<ol type="1">
+<li><strong>Comprensión.</strong> Banda alta. Distingue en el texto el criterio y su aplicación, y usa el criterio como término de la comparación.</li>
+<li><strong>Comparación.</strong> Banda alta. Localiza el punto de separación —qué cuenta como dato inmediato— y dice el precio que paga cada posición, que es la forma más económica de ser crítico sin opinar.</li>
+<li><strong>Vocabulario.</strong> Banda alta. <em>Impresión</em>, <em>ideas innatas</em>, <em>fundamento</em>, <em>necesidad</em>: cuatro términos trabajando, ninguno de adorno.</li>
+<li><strong>Estructura.</strong> Banda alta. Problema, criterio, criterio inverso, parentesco, precio, cierre.</li>
+<li><strong>Gramática.</strong> Banda alta.</li>
+</ol>
+<p><strong>Y una advertencia sobre el destino elegido.</strong> Si quieres ver este mismo texto cruzado con Hume por el otro lado —la sustancia y el yo—, está desarrollado en el capítulo 4, sobre el enunciado de la ordinaria de 2026, y allí es el ejemplo de destino elegido. No repitas ese cruce aquí sin leerlo antes: es más ambicioso que este y necesita más palabras.</p>
+<p><strong>Material para prepararla:</strong> <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-34" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 34">§34</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-36" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 36">§36</a> (Descartes, tema 8), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-38" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 38">§38</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-39" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 39">§39</a> (Locke y Hume, tema 9); enfrentadas de un vistazo, la tabla «Racionalismo y empirismo» de «Perspectivas enfrentadas».</p>
+</section>
+<section id="a-la-respuesta-de-7" class="level2">
+<h2 class="anchored" data-anchor-id="a-la-respuesta-de-7">1.2.A · La respuesta de 7</h2>
+<blockquote class="blockquote">
+<p>El texto de Descartes plantea el problema del origen del conocimiento, que enfrentó en la filosofía moderna a dos grandes corrientes. El racionalismo es continental y sus principales representantes son Descartes, Spinoza y Leibniz. Sostiene que la razón es la única fuente segura de conocimiento, porque solo ella alcanza verdades necesarias y universales, y que los sentidos son engañosos, como se ve en el propio texto cuando Descartes decide rechazarlos. Admite además ideas innatas, que la mente encuentra en sí misma sin haberlas recibido de la experiencia, y distingue tres clases de ideas: adventicias, facticias e innatas. El empirismo es británico y sus representantes son Locke, Berkeley y Hume. Sostiene lo contrario: la mente al nacer es una tabla rasa, un papel en blanco donde todo lo escribe la experiencia, y no existen las ideas innatas. Para Hume todo conocimiento procede de impresiones, y aquello de lo que no tenemos impresión no puede conocerse, lo que le lleva a criticar la sustancia y la causalidad. La oposición entre las dos corrientes duró todo el siglo XVII y el siglo XVIII, hasta que Kant propuso una síntesis en la que la experiencia aporta la materia y el sujeto las formas a priori. Podemos concluir que el texto de Descartes representa la posición racionalista, mientras que el empirismo defiende justamente lo contrario, y que entre ambos se juega el nacimiento de la teoría del conocimiento moderna.</p>
+</blockquote>
+<p><strong>Doscientas treinta y cuatro palabras, todas verdaderas, y ni una sola comparación.</strong> Esta respuesta sabe más cosas que la de 10. Enumera correctamente las dos corrientes, sus miembros, sus tesis y hasta la clasificación de las ideas, y remata con Kant. Y aun así se queda en un 7, por una razón que conviene que veas con claridad, porque es el error más caro del examen entero.</p>
+<ol type="1">
+<li><strong>Comprensión.</strong> Banda alta. El texto está entendido, y la línea sobre el rechazo de los sentidos demuestra que se ha leído.</li>
+<li><strong>Comparación.</strong> Banda media, y ahí se va la nota. El texto aparece dos veces y las dos de pasada: una para ilustrar el racionalismo y otra en la última línea, para decir que lo representa. Todo lo demás es exposición de dos corrientes, correctísima y ajena al cruce. La frase final no compara: anuncia que hay comparación.</li>
+<li><strong>Vocabulario.</strong> Banda alta, con un exceso. Las tres clases de ideas y la crítica de la causalidad no le hacen falta a nadie aquí, y ocupan sitio.</li>
+<li><strong>Estructura.</strong> Banda alta. Dos bloques limpios y un cierre. El problema no es cómo está construida, sino qué construye.</li>
+<li><strong>Gramática.</strong> Banda alta.</li>
+</ol>
+<p><strong>El diagnóstico, en una frase: has escrito un ejercicio 3 en el hueco de la 1.2.A.</strong> «Exponga el debate en torno al origen del conocimiento en la filosofía moderna» es un enunciado real —cayó en la extraordinaria de 2026— y esta respuesta lo contestaría bien. Pero aquí no te piden exponer un debate: te piden cruzar <em>este</em> texto con él. Es la misma diferencia que separa presentar a dos personas de hacerlas discutir.</p>
+<p><strong>Y la reparación es de reparto, no de estudio.</strong> Quita los nombres de acompañamiento —Spinoza, Leibniz, Berkeley—, la clasificación de las ideas y la síntesis de Kant, que no entra en el cruce: unas sesenta palabras. Gasta veinte en decir qué problema comparten el texto y las dos corrientes, y las cuarenta restantes en el punto de choque, que ya lo tienes localizado dentro de tu propia respuesta, en la palabra <em>innatas</em>. Con eso el eje que más pesa pasa de media a alta sin haber aprendido nada nuevo.</p>
+</section>
+<section id="b-la-explicación" class="level2">
+<h2 class="anchored" data-anchor-id="b-la-explicación">1.2.B · La explicación</h2>
+<p><strong>El enunciado.</strong> «Explique, de forma argumentada, por qué Descartes afirma en el texto: “yo pienso, luego soy”.» Tres puntos, doscientas cincuenta palabras como máximo.</p>
+<blockquote class="blockquote">
+<p>Descartes afirma esta proposición como resultado de un experimento que le sale al revés de lo previsto. Venía de aplicar su regla —tener por falso todo aquello en que quepa la menor duda— a tres territorios cada vez más amplios: los sentidos, que a veces engañan; el razonamiento, que se equivoca hasta en los asuntos más simples de geometría; y la vigilia entera, porque cuanto pienso despierto podría estar soñándolo. El tercer golpe se lleva por delante a los dos anteriores y no deja nada en pie, y es entonces cuando aparece el obstáculo: para pensar que todo es falso hace falta que yo, que lo estoy pensando, sea alguna cosa. La certeza no se encuentra fuera de la duda, sino dentro; no sobrevive a la duda porque la duda no llegara hasta ella, sino porque cuanto más se duda, más se confirma. Y hay una segunda razón, que es la que explica la palabra «luego». La afirmación no es una intuición aislada: es una inferencia, y su fuerza está en que el ejercicio de dudar la produce cada vez que se hace. Por eso Descartes puede decir que ni las suposiciones más extravagantes de los escépticos son capaces de conmoverla, que era el listón que él mismo se había puesto al empezar. La proposición no le sirve para saber algo más, sino para tener por fin dónde apoyar el pie.</p>
+</blockquote>
+<p><strong>Doscientas treinta y una palabras y una explicación que reconstruye el argumento entero, que es exactamente lo que la frase exige.</strong> Ahí está la banda alta de comprensión: la frase no puede explicarse leyéndola sola, hay que traerla desde los tres golpes de la duda, y esta respuesta lo hace. Pero mira el final.</p>
+<ol type="1">
+<li><strong>Comprensión.</strong> Banda alta, sin discusión.</li>
+<li><strong>Explicación.</strong> Banda media-alta, y aquí se queda el 7. Explica por qué la proposición es <em>verdadera</em> —para pensar hay que ser— y por qué resiste, que ya es mucho. Lo que no explica es por qué Descartes la afirma <em>en este sitio y con esta solemnidad</em>: el pasaje no termina cuando encuentra la certeza, termina cuando la recibe «como el primer principio de la filosofía que andaba buscando». Ese último movimiento es el que convierte un hallazgo en un cimiento, y sin él la respuesta ha explicado el <em>cogito</em> pero no el párrafo.</li>
+<li><strong>Vocabulario.</strong> Banda alta. <em>Inferencia</em>, <em>intuición</em>, <em>regla</em>: usados y no exhibidos.</li>
+<li><strong>Estructura.</strong> Banda alta. Antecedente, obstáculo, razón, confirmación, cierre.</li>
+<li><strong>Gramática.</strong> Banda alta.</li>
+</ol>
+<p><strong>Lo que separa este 7 del 10 son veinticinco palabras y están al alcance.</strong> Basta con cerrar diciendo lo que se derrumba sin esta frase: sin ella la duda se queda en escepticismo y no hay desde dónde reconstruir nada, y por eso Descartes no la trata como una certeza más, sino como la primera piedra. Fíjate en que es el mismo cierre que hace banda alta en la 1.2.B de la ordinaria de 2026: decir qué se juega en la frase, y no solo qué dice. Método en el capítulo 5; el paso a paso del fragmento, en el capítulo 9.</p>
+</section>
+<section id="la-disertación" class="level2">
+<h2 class="anchored" data-anchor-id="la-disertación">2 · La disertación</h2>
+<p><strong>El enunciado.</strong> «El ser humano es un proyecto abierto, no tiene una esencia inalterable.» Tres puntos, doscientas o trescientas palabras orientativas.</p>
+<p><strong>Antes de la respuesta, una advertencia que vale por medio capítulo.</strong> Esta tesis y la de la extraordinaria de 2026 —«¿el ser humano es un proyecto abierto o tiene una esencia inalterable?»— son la misma pregunta con dos puntuaciones distintas. Aquí va afirmada y allí interrogada, y por lo demás no cambia una palabra. Es la prueba más limpia de que trabajar los modelos oficiales no es tiempo perdido, y también un aviso: no significa que vaya a repetirse otra vez.</p>
+<blockquote class="blockquote">
+<p><strong>El molde y el barro</strong></p>
+<p>¿Somos algo antes de hacer nada? La tesis lo niega: no habría naturaleza fija que cumplir, sino un proyecto que se escribe solo. Pero conviene preguntar antes qué se está negando, porque «esencia» no significa lo mismo en todas las bocas.</p>
+<p>A favor está Aristóteles, con un argumento que no se parece al de Platón: no pone la naturaleza humana en otro mundo, sino aquí, y la deduce de una pregunta práctica. Cada cosa tiene una función propia, y la del ser humano es la actividad racional. De ahí su ética entera: ser bueno no es obedecer un modelo externo, sino desarrollar bien lo que uno ya es, y por eso la virtud se adquiere con hábitos y no con teoremas. Hay naturaleza, pero es punto de partida y no destino.</p>
+<p>En contra está Sartre. Si nadie nos ha pensado antes de fabricarnos, no hay plan previo: «la existencia precede a la esencia», y el ser humano no es más que lo que se hace. De ahí el desamparo, porque no queda naturaleza ni valor que excusen una elección. «El hombre está condenado a ser libre»: el participio no es adorno, la libertad se sufre.</p>
+<p>En mi opinión la disyuntiva mezcla dos sentidos de la palabra. Si esencia es un contenido que dicta lo que debes hacer, la tesis acierta y no lo hay. Si es la capacidad que hace posible que te hagas, sin ella no habría proyecto. Lo veo cuando alguien zanja una discusión con «yo soy así», y a mayor escala en los perfiles que las aplicaciones construyen con lo que hemos hecho: nos devuelven el pasado convertido en carácter, y aciertan porque les hacemos caso.</p>
+<p>Concluyo que somos un proyecto abierto, y que podemos serlo porque algo no cambia: la capacidad de empezar. Naturaleza tenemos; guion, no.</p>
+</blockquote>
+<p><strong>Trescientas seis palabras contando el título, seis por encima de la orientación y sin penalización por ello (capítulo 2), con la lista de comprobación del capítulo 6 cubierta punto por punto.</strong> Título sugerente que anticipa la imagen sin desvelarla, cuatro bloques, dos autores argumentados y no mencionados, una cita integrada donde argumenta, dos preguntas que abren, opinión en primera persona con ejemplo, y una actualización que no es un adorno pegado al final sino la propia tesis vista hoy.</p>
+<p><strong>Y ahora lo que esta disertación tiene de instructivo, que no está en la rúbrica.</strong> La extraordinaria de 2026 responde a esta misma tesis en la Parte V, y lo hace con <strong>Platón a favor de la esencia y el existencialismo en contra</strong>, cerrando con la libertad situada. Aquí el a favor lo lleva <strong>Aristóteles</strong>, que es una defensa de la esencia de otra clase —inmanente, no en otro mundo— y por eso obliga a un en contra distinto; y la opinión no busca el término medio entre las dos posiciones, sino que desmonta la disyuntiva distinguiendo dos usos de la palabra. <strong>Las dos son de banda alta.</strong> Léelas seguidas: son el ejemplo más claro del libro de que una misma tesis admite disertaciones que no se parecen en nada, y de que lo que se corrige no es tu conclusión sino cómo la defiendes.</p>
+<p><strong>Material:</strong> <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-04.html#sec-18" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 18">§18</a> (la eudaimonía y la función propia, tema 4) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-04.html#sec-17" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 17">§17</a> (Aristóteles: las virtudes, tema 4); <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-17.html#sec-62" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 62">§62</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-17.html#sec-64" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 64">§64</a> (el existencialismo y Sartre, tema 17).</p>
+</section>
+<section id="a-la-crisis-de-la-polis-y-la-ética-helenística" class="level2">
+<h2 class="anchored" data-anchor-id="a-la-crisis-de-la-polis-y-la-ética-helenística">3.A · La crisis de la polis y la ética helenística</h2>
+<p><strong>El enunciado.</strong> «Desarrolle, de forma argumentada, la crisis de la polis y la propuesta de la ética helenística.» Tres puntos, doscientas o trescientas palabras orientativas.</p>
+<blockquote class="blockquote">
+<p>Con las conquistas de Alejandro Magno la polis griega deja de ser el marco donde se decide nada. El ciudadano que deliberaba en la asamblea pasa a ser súbdito de un imperio enorme y lejano, y con ello se rompe el supuesto que sostenía la ética anterior: que la vida buena era la vida política y que el individuo se realizaba en su comunidad. Si la comunidad ya no está a tu alcance, la pregunta por la felicidad tiene que buscarse otro sitio, y ese sitio es el interior. Esa es la propuesta común de las escuelas helenísticas, aunque cada una la desarrolle a su manera. Los estoicos distinguen lo que depende de nosotros de lo que no, y sitúan la felicidad solo en lo primero: no en que las cosas salgan como quieres, sino en querer conforme a la razón que gobierna el mundo, de donde salen la <em>apatheia</em> y la aceptación del destino. Los epicúreos buscan el placer, pero entendido como ausencia de dolor y de perturbación, la <em>ataraxia</em>, que se alcanza suprimiendo los miedos y reduciendo los deseos a los naturales y necesarios. Los escépticos suspenden el juicio, porque piensan que la pretensión de saber es la fuente de la inquietud. Y los cínicos rechazan directamente las convenciones sociales y viven conforme a la naturaleza. Las cuatro coinciden en dos cosas: la filosofía deja de ser conocimiento y pasa a ser terapia, y la felicidad deja de depender del mundo para depender de la actitud ante él. Es el mismo movimiento que reaparece hoy cada vez que la respuesta a un problema colectivo se busca en la gestión de las emociones propias.</p>
+</blockquote>
+<p><strong>Doscientas setenta y cinco palabras, la tesis bien sostenida y el vínculo entre las dos mitades del enunciado bien hecho.</strong> Fíjate en lo que hace bien, porque es lo difícil: la crisis no es un preámbulo cronológico, es la causa, y la respuesta lo dice —si la comunidad ya no está a tu alcance, la pregunta se muda de sitio—. Con eso el «y» del enunciado queda cumplido, y ahí está la mitad de la nota.</p>
+<p><strong>Entonces, ¿por qué un 7?</strong> Vuelve a leerla mirando solo los nombres propios. Hay cuatro escuelas y ni un solo filósofo, ni una obra, ni un siglo. «Los estoicos distinguen», «los epicúreos buscan»: la doctrina está bien y el autor no está. La banda alta de este ejercicio pide expresamente nombrar la corriente, la época y la obra principal, y aportar referencias exactas (capítulo 2), y aquí se cumple lo primero y se incumple lo demás.</p>
+<p><strong>La reparación cuesta una línea por escuela y no exige entender nada nuevo.</strong> Zenón de Citio y el Pórtico, a comienzos del siglo III a. e. c.; Epicuro y su <em>Carta a Meneceo</em>, con el tetrafármaco; Pirrón de Elis; Diógenes de Sínope. Y una fecha que ancla el conjunto: la muerte de Alejandro en 323 a. e. c., que es donde suele fijarse el comienzo del periodo. Son unas cuarenta palabras y valen más que cualquier matiz doctrinal que pudieras añadir, porque son las que la rúbrica nombra una por una. <strong>Es el olvido más evitable del examen</strong> (capítulo 7), y aparece aquí precisamente porque quien escribe esta respuesta sabe de sobra.</p>
+<p><strong>Material:</strong> <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-20" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 20">§20</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-23" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 23">§23</a> (las escuelas helenísticas, tema 5); el marco de la crisis, en la apertura de esa parte del manual.</p>
+</section>
+<section id="b-los-maestros-de-la-sospecha" class="level2">
+<h2 class="anchored" data-anchor-id="b-los-maestros-de-la-sospecha">3.B · Los maestros de la sospecha</h2>
+<p><strong>El enunciado.</strong> «Desarrolle, de forma argumentada, las aportaciones y las críticas que hacen los maestros de la sospecha.» Tres puntos, doscientas o trescientas palabras orientativas.</p>
+<blockquote class="blockquote">
+<p>«Maestros de la sospecha» es el nombre que Paul Ricoeur dio a Marx, Nietzsche y Freud, tres pensadores del siglo XIX que no comparten doctrina y sí un procedimiento. Todos ellos dejan de preguntar si una idea es verdadera para preguntar de dónde viene y a quién sirve, porque los tres niegan lo que la filosofía moderna había dado por seguro desde Descartes: que la conciencia sea transparente para sí misma. Lo que crees pensar tiene una causa, y no es la que tú crees. De ese procedimiento común salen tres críticas distintas. Karl Marx (1818-1883), en <em>La ideología alemana</em>, sostiene que las ideas dominantes de una época son las de la clase dominante: no explican la sociedad, la justifican, y por eso hay que buscar su raíz en las condiciones materiales de producción. Friedrich Nietzsche (1844-1900) aplica a la moral la genealogía: los valores no caen del cielo ni valen por sí mismos, tienen una historia y un beneficiario, y la moral occidental nació de la inversión que hicieron los débiles con lo que él llama resentimiento. Sigmund Freud (1856-1939) muestra que buena parte de lo que nos determina es inconsciente, de modo que el yo «no es dueño en su propia casa». La aportación mayor no es ninguna de las tres doctrinas, que son discutibles y han sido discutidas, sino la herramienta que dejan y que ha sobrevivido a todas ellas. Y conviene ver también su reverso: una sospecha aplicada sin límite acaba volviéndose contra sí misma y hace imposible cualquier acuerdo. Hoy leemos casi cualquier declaración preguntando a quién beneficia, y ese gesto viene de aquí, con lo que tiene de lucidez y con lo que tiene de trampa.</p>
+</blockquote>
+<p><strong>Doscientas ochenta y dos palabras y la lista de comprobación del capítulo 7 cubierta con holgura.</strong> Los tres autores con sus fechas, dos obras con su título, los conceptos característicos definidos y trabajando —ideología, genealogía, resentimiento, inconsciente—, y un cierre que actualiza sin opinar. Pero lo que la coloca en la banda alta no es el inventario, sino la arquitectura: <strong>el enunciado pide dos cosas y la respuesta las separa</strong>. Primero el método común, que es la aportación; después las tres críticas, que son distintas y no se dejan resumir juntas; y al final la aportación de verdad, que es lo que queda cuando las tres doctrinas se ponen en duda.</p>
+<p><strong>Fíjate además en la penúltima frase, porque es la que ningún resumen de apuntes trae.</strong> Decir que la sospecha llevada al límite se anula a sí misma es criticar a los críticos, y la rúbrica paga por eso: pide argumentar con solidez y concluir razonadamente, no adherirse. Nietzsche entra por el mismo sitio en el capítulo 11, pero desde sus fragmentos y por dentro; aquí entra como una pieza de un movimiento más amplio.</p>
+<p><strong>Material:</strong> <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-14.html#sec-55" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 55">§55</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-14.html#sec-56" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 56">§56</a> (los filósofos de la sospecha, tema 14), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-15.html#sec-57" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 57">§57</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-15.html#sec-58" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 58">§58</a> (Marx, tema 15) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-16.html#sec-59" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 59">§59</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-16.html#sec-61" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 61">§61</a> (Nietzsche, tema 16).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/eukeni-acebal\.github\.io\/pau\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters-web/examen-extraordinaria-2026.html" class="pagination-link" aria-label="La extraordinaria de 2026, resuelta y comentada">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">La extraordinaria de 2026, resuelta y comentada</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters-web/examen-modelo-1.html" class="pagination-link" aria-label="El modelo oficial I, resuelto y comentado">
+        <span class="nav-page-text"><span class="chapter-title">El modelo oficial I, resuelto y comentado</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
