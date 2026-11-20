@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,18 +40,19 @@ ul.task-list li input[type="checkbox"] {
 <link href="../chapters-web/capitulo-06.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fc20a56aadcab808120179de1ae02e97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-ee624aba7dd1a522a65201b5a843d75b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-fc20a56aadcab808120179de1ae02e97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b29469c5149ea663b658181c1cab893f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1eae7551a8b327b748a04a3a7b98b1fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b29469c5149ea663b658181c1cab893f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../quarto-theme/print.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,13 +260,13 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-07.html"><span class="chapter-title">La explicación argumentada de un tema</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-07.html"><span class="chapter-title">La explicación argumentada de un tema</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -268,17 +277,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Sitio web"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p><a href="https://arete.eukeniacebal.net/es/">Areté</a></p>
+</div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Historia de la Filosofía</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://arete.eukeniacebal.net/es/" title="Colección Areté" class="quarto-navigation-tool px-1" aria-label="Colección Areté"><i class="bi bi-house-door"></i></a>
-    <a href="https://arete.eukeniacebal.net/usap/" title="Euskarazko bertsioa" class="quarto-navigation-tool px-1" aria-label="Euskarazko bertsioa"><i class="bi bi-translate"></i></a>
-    <a href="https://github.com/eukeni-acebal/pau/releases/latest/download/cuaderno-pau-filosofia.pdf" title="Descargar el PDF" class="quarto-navigation-tool px-1" aria-label="Descargar el PDF"><i class="bi bi-file-earmark-pdf"></i></a>
-    <a href="mailto:arete.eukeni@gmail.com?subject=Errata%20o%20sugerencia%20%C2%B7%20Cuaderno%20de%20la%20PAU" title="Avisar de una errata" class="quarto-navigation-tool px-1" aria-label="Avisar de una errata"><i class="bi bi-envelope"></i></a>
-    <a href="https://github.com/eukeni-acebal/pau" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro" aria-label="Alternar modo oscuro"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -302,12 +308,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte I · La prueba</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Parte I · La prueba</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección: Parte I · La prueba">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cómo funciona la prueba</span></a>
@@ -323,12 +329,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte II · Métodos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Parte II · Métodos</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección: Parte II · Métodos">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El resumen y la estructura argumental</span></a>
@@ -359,12 +365,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte III · Las cinco lecturas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Parte III · Las cinco lecturas</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección: Parte III · Las cinco lecturas">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Platón: <em>República</em>, libro VII</span></a>
@@ -395,12 +401,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte IV · Aparato comparativo</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Parte IV · Aparato comparativo</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección: Parte IV · Aparato comparativo">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/cross-bloque.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Comparar a través de los bloques</span></a>
@@ -416,12 +422,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte V · Exámenes resueltos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Parte V · Exámenes resueltos</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección: Parte V · Exámenes resueltos">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/examen-ordinaria-2026.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La ordinaria de 2026, resuelta y comentada</span></a>
@@ -446,11 +452,17 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-</nav>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<ul>
+<li><a href="https://arete.eukeniacebal.net/usap/" lang="eu" hreflang="eu">Euskaraz</a></li>
+<li><a href="https://github.com/eukeni-acebal/pau/releases/latest/download/cuaderno-pau-filosofia.pdf">Descargar PDF</a></li>
+<li><a href="mailto:arete.eukeni@gmail.com?subject=Errata%20o%20sugerencia%20%C2%B7%20Cuaderno%20de%20la%20PAU">Escríbeme</a></li>
+</ul>
+</div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul class="collapse">
@@ -465,10 +477,10 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-07.html"><span class="chapter-title">La explicación argumentada de un tema</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-07.html"><span class="chapter-title">La explicación argumentada de un tema</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">La explicación argumentada de un tema</span></h1>
 </div>
@@ -527,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="el-mapa-del-manual" class="level2">
 <h2 class="anchored" data-anchor-id="el-mapa-del-manual">El mapa del manual</h2>
-<p>Las cuestiones del ejercicio nombran una de tres cosas: un autor con uno de sus problemas, un debate que atraviesa una época o una corriente entera. La tabla traduce cada tipo a su casa en el manual, con el formato de remisión de todo el cuaderno: la sección y, al lado, el autor y el tema para encontrarla por el índice <a href="capitulo-07.html#tbl-mapa-del-manual-para-el-ejercicio-3">Tabla 10</a>.</p>
+<p>Las cuestiones del ejercicio nombran una de tres cosas: un autor con uno de sus problemas, un debate que atraviesa una época o una corriente entera. La tabla traduce cada tipo a su casa en el manual, con el formato de remisión de todo el cuaderno: la sección y, al lado, el autor y el tema para encontrarla por el índice <a href="../chapters-web/capitulo-07.html#tbl-mapa-del-manual-para-el-ejercicio-3">Tabla 10</a>.</p>
 <span id="tbl-mapa-del-manual-para-el-ejercicio-3" class="tbl-ancla"></span>
 <table class="caption-top table">
 <caption>El mapa del manual para el ejercicio 3: de cada tipo de cuestión a las secciones donde se estudia.</caption>
@@ -542,112 +554,112 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Autor</td>
 <td>Sócrates: figura, método, intelectualismo</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-06" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 06">§06</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-07" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 07">§07</a> (tema 2)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-06" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 06">§06</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-07" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 07">§07</a> (tema 2)</td>
 </tr>
 <tr class="even">
 <td>Autor</td>
 <td>Platón: Formas, conocimiento, política</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-03.html#sec-09" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 09">§09</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-03.html#sec-13" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 13">§13</a> (tema 3)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-03.html#sec-09" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 09">§09</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-03.html#sec-13" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 13">§13</a> (tema 3)</td>
 </tr>
 <tr class="odd">
 <td>Autor</td>
 <td>Aristóteles: realidad, ética, política</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-04.html#sec-14" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 14">§14</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-04.html#sec-19" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 19">§19</a> (tema 4)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-04.html#sec-14" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 14">§14</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-04.html#sec-19" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 19">§19</a> (tema 4)</td>
 </tr>
 <tr class="even">
 <td>Autor</td>
 <td>Agustín de Hipona: creer para entender</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-26" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 26">§26</a> (tema 6)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-26" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 26">§26</a> (tema 6)</td>
 </tr>
 <tr class="odd">
 <td>Autor</td>
 <td>Tomás de Aquino: fe y razón, las cinco vías</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-27" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 27">§27</a> (tema 6)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-27" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 27">§27</a> (tema 6)</td>
 </tr>
 <tr class="even">
 <td>Autor</td>
 <td>Descartes: método, duda, <em>cogito</em></td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-35" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 35">§35</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-37" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 37">§37</a> (tema 8)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-35" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 35">§35</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-37" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 37">§37</a> (tema 8)</td>
 </tr>
 <tr class="odd">
 <td>Autor</td>
 <td>Kant: crítica, ética, Ilustración</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-11.html#sec-47" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 47">§47</a> (tema 11) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-12.html#sec-51" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 51">§51</a> (tema 12)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-11.html#sec-47" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 47">§47</a> (tema 11) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-12.html#sec-51" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 51">§51</a> (tema 12)</td>
 </tr>
 <tr class="even">
 <td>Autor</td>
 <td>Marx: alienación, materialismo histórico</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-15.html#sec-57" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 57">§57</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-15.html#sec-58" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 58">§58</a> (tema 15)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-15.html#sec-57" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 57">§57</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-15.html#sec-58" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 58">§58</a> (tema 15)</td>
 </tr>
 <tr class="odd">
 <td>Autor</td>
 <td>Nietzsche: moral, nihilismo, superhombre</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-16.html#sec-59" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 59">§59</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-16.html#sec-61" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 61">§61</a> (tema 16)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-16.html#sec-59" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 59">§59</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-16.html#sec-61" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 61">§61</a> (tema 16)</td>
 </tr>
 <tr class="even">
 <td>Autor</td>
 <td>Arendt: el totalitarismo, el mal</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-19.html#sec-69" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 69">§69</a> (tema 19)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-19.html#sec-69" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 69">§69</a> (tema 19)</td>
 </tr>
 <tr class="odd">
 <td>Autor</td>
 <td>Beauvoir: la categoría «mujer»</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-21.html#sec-77" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 77">§77</a> (tema 21)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-21.html#sec-77" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 77">§77</a> (tema 21)</td>
 </tr>
 <tr class="even">
 <td>Debate</td>
 <td>Fe y razón en la filosofía medieval</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-25" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 25">§25</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-28" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 28">§28</a> (tema 6)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-25" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 25">§25</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-28" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 28">§28</a> (tema 6)</td>
 </tr>
 <tr class="odd">
 <td>Debate</td>
 <td>El origen del conocimiento en la filosofía moderna</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-34" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 34">§34</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-40" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 40">§40</a> (temas 8-9) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a> (Kant, tema 12)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-34" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 34">§34</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-09.html#sec-40" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 40">§40</a> (temas 8-9) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a> (Kant, tema 12)</td>
 </tr>
 <tr class="even">
 <td>Debate</td>
 <td>El poder: del contrato social al liberalismo</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-10.html#sec-41" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 41">§41</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-10.html#sec-46" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 46">§46</a> (tema 10)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-10.html#sec-41" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 41">§41</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-10.html#sec-46" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 46">§46</a> (tema 10)</td>
 </tr>
 <tr class="odd">
 <td>Debate</td>
 <td>La mujer en la cultura y la filosofía</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-08" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 08">§08</a> (tema 2), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-24" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 24">§24</a> (tema 5), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-29" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 29">§29</a> (tema 6), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a> (tema 21)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-08" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 08">§08</a> (tema 2), <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-05.html#sec-24" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 24">§24</a> (tema 5), <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-29" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 29">§29</a> (tema 6), <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a> (tema 21)</td>
 </tr>
 <tr class="even">
 <td>Corriente</td>
 <td>Los sofistas y la Ilustración griega</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-04" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 04">§04</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-05" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 05">§05</a> (tema 2)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-04" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 04">§04</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-05" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 05">§05</a> (tema 2)</td>
 </tr>
 <tr class="odd">
 <td>Corriente</td>
 <td>Las escuelas helenísticas</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-20" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 20">§20</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-23" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 23">§23</a> (tema 5)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-05.html#sec-20" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 20">§20</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-05.html#sec-23" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 23">§23</a> (tema 5)</td>
 </tr>
 <tr class="even">
 <td>Corriente</td>
 <td>Renacimiento y revolución científica</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-07.html#sec-30" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 30">§30</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-07.html#sec-33" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 33">§33</a> (tema 7)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-07.html#sec-30" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 30">§30</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-07.html#sec-33" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 33">§33</a> (tema 7)</td>
 </tr>
 <tr class="odd">
 <td>Corriente</td>
 <td>La Ilustración</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-11.html#sec-47" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 47">§47</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-11.html#sec-47" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 47">§47</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11)</td>
 </tr>
 <tr class="even">
 <td>Corriente</td>
 <td>Los filósofos de la sospecha</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-14.html#sec-55" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 55">§55</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-14.html#sec-56" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 56">§56</a> (tema 14)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-14.html#sec-55" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 55">§55</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-14.html#sec-56" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 56">§56</a> (tema 14)</td>
 </tr>
 <tr class="odd">
 <td>Corriente</td>
 <td>El pensamiento feminista</td>
-<td><a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-21.html#sec-77" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 77">§77</a> (tema 21)</td>
+<td><a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-11.html#sec-49" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 49">§49</a> (tema 11) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-21.html#sec-76" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 76">§76</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-21.html#sec-77" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 77">§77</a> (tema 21)</td>
 </tr>
 </tbody>
 </table>
 <p><strong>La tabla dice dónde se estudia cada cosa; no dice qué va a caer.</strong> Tampoco es una valla: el territorio sigue siendo el curso entero, y si la cuestión no encaja en ninguna fila, el recurso es el de siempre (capítulo 4): la cuestión nombra una época o una corriente, y las partes del manual están ordenadas por ellas.</p>
-<p><strong>Y una segunda entrada al mismo mapa, esta vez por el autor.</strong> Hay seis nombres del curso que no son lectura obligatoria y que aun así pueden caer aquí: no tienen capítulo en la Parte III ni fragmento que comentar, y el ejercicio 3 los alcanza igual, porque recorre el currículo entero. De cada uno, la tabla dice quién es en una línea y por dónde ha entrado la prueba hasta hoy; dónde se estudian ya lo tienes arriba, en las filas de autor <a href="capitulo-07.html#tbl-seis-autores-que-no-son-lectura-obligatoria">Tabla 11</a>.</p>
+<p><strong>Y una segunda entrada al mismo mapa, esta vez por el autor.</strong> Hay seis nombres del curso que no son lectura obligatoria y que aun así pueden caer aquí: no tienen capítulo en la Parte III ni fragmento que comentar, y el ejercicio 3 los alcanza igual, porque recorre el currículo entero. De cada uno, la tabla dice quién es en una línea y por dónde ha entrado la prueba hasta hoy; dónde se estudian ya lo tienes arriba, en las filas de autor <a href="../chapters-web/capitulo-07.html#tbl-seis-autores-que-no-son-lectura-obligatoria">Tabla 11</a>.</p>
 <span id="tbl-seis-autores-que-no-son-lectura-obligatoria" class="tbl-ancla"></span>
 <table class="caption-top table">
 <caption>Los seis autores que no son lectura obligatoria: quién es cada uno y por dónde ha entrado en ellos el ejercicio 3.</caption>
@@ -667,7 +679,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>Aristóteles de Estagira (384-322 a. e. c.)</td>
 <td>Discípulo y crítico de Platón, y el sistema más completo de la Antigüedad</td>
-<td>El debate político platónico-aristotélico (3.B, modelo I); el lado platónico está en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-03.html#sec-13" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 13">§13</a> (tema 3)</td>
+<td>El debate político platónico-aristotélico (3.B, modelo I); el lado platónico está en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-03.html#sec-13" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 13">§13</a> (tema 3)</td>
 </tr>
 <tr class="odd">
 <td>Agustín de Hipona (354-430 e. c.)</td>
@@ -692,7 +704,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p><strong>La última fila es la que explica la lista.</strong> Arendt no ha aparecido en este formato y está aquí igualmente, porque el criterio de la tabla es el currículo y no el historial: entran los autores que el curso estudia y la prueba puede pedir, no los que ya ha pedido. Ordenada por lo segundo sería una lista de apuestas, y de esas no hay ninguna en este cuaderno. Y tiene algo que no tiene ninguno de los otros cinco: fue lectura obligatoria hasta 2025, así que esta es la única línea del libro que te dice dónde ha quedado.</p>
-<p><strong>¿Y la doctrina de cada uno?</strong> En el manual, a propósito. Una entrada aquí no puede explicar la armonía de fe y razón mejor que <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-27" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 27">§27</a> (Tomás, tema 6), y tenerla en dos sitios solo garantiza que algún día discrepen. Las dos tablas son un plano de carreteras: te dicen adónde ir, no lo que verás al llegar.</p>
+<p><strong>¿Y la doctrina de cada uno?</strong> En el manual, a propósito. Una entrada aquí no puede explicar la armonía de fe y razón mejor que <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-27" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 27">§27</a> (Tomás, tema 6), y tenerla en dos sitios solo garantiza que algún día discrepen. Las dos tablas son un plano de carreteras: te dicen adónde ir, no lo que verás al llegar.</p>
 </section>
 <section id="errores-que-cuestan-puntos" class="level2">
 <h2 class="anchored" data-anchor-id="errores-que-cuestan-puntos">Errores que cuestan puntos</h2>
@@ -712,12 +724,12 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>Sócrates y Platón comparten adversario y escenario: los sofistas, los maestros de retórica de la Atenas del siglo V a. e. c.&nbsp;que cobraban por enseñar a triunfar en la asamblea y en el tribunal. La primera crítica es sobre la verdad. Protágoras sostenía que «el hombre es la medida de todas las cosas»: si cada ciudad y cada persona son medida, no hay conocimiento, solo opiniones. Sócrates, que filosofó preguntando y sin escribir, opone su método: el diálogo que examina definiciones —qué es la justicia, no qué parece justo en Atenas—, convencido de que bajo las opiniones hay algo común que la razón puede alcanzar. Platón, su discípulo y fundador de la Academia, da a esa convicción fundamento metafísico en la <em>República</em>: existen las Formas, realidades inmutables que la razón conoce, y la justicia no es la convención de cada polis sino la Forma que permite juzgarlas a todas. La segunda crítica es sobre la palabra: la retórica persuade sin saber, mientras la dialéctica busca saber, y quien enseña a defender cualquier tesis con el mismo brillo enseña indiferencia hacia la verdad. La tercera es sobre la virtud: los sofistas la venden como técnica del éxito; para Sócrates es cuidado del alma e inseparable del saber, porque nadie obra mal a sabiendas —el intelectualismo socrático—. El pleito sigue abierto: si el debate público busca la verdad o solo la persuasión es, hoy, la misma pregunta socrática.</p>
 </blockquote>
-<p>Repasa la lista: época y oficio de los sofistas en la primera frase, la obra en su sitio, los conceptos —relativismo, dialéctica, las Formas, el intelectualismo— definidos y trabajando, dos referencias exactas, tres críticas encadenadas y un cierre que actualiza sin opinar. El material está en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-04" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 04">§04</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-02.html#sec-07" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 07">§07</a> (tema 2) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-03.html#sec-09" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 09">§09</a> (Platón, tema 3).</p>
+<p>Repasa la lista: época y oficio de los sofistas en la primera frase, la obra en su sitio, los conceptos —relativismo, dialéctica, las Formas, el intelectualismo— definidos y trabajando, dos referencias exactas, tres críticas encadenadas y un cierre que actualiza sin opinar. El material está en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-04" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 04">§04</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-02.html#sec-07" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 07">§07</a> (tema 2) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-03.html#sec-09" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 09">§09</a> (Platón, tema 3).</p>
 <p><strong>Segunda: el bloque medieval, sobre el enunciado de la extraordinaria de 2026.</strong> «Exponga la cuestión de la relación entre fe y razón en la filosofía medieval».</p>
 <blockquote class="blockquote">
 <p>La filosofía medieval hereda dos fuentes de verdad que no siempre dicen lo mismo: la revelación, recogida en las Escrituras, y la razón, heredada de los filósofos griegos. La cuestión de cómo se relacionan atraviesa todo el periodo, y sus tres grandes respuestas dibujan una trayectoria. Agustín de Hipona —siglos IV y V, en el tránsito de la Antigüedad al mundo cristiano— responde con la subordinación confiada: «creer para entender», porque la fe orienta a la razón y no puede haber conflicto donde la verdad es una; su platonismo cristiano convierte las Formas en ideas de la mente de Dios. Tomás de Aquino, dominico del siglo XIII y autor de la <em>Suma teológica</em>, responde con la armonía: fe y razón son dos vías distintas hacia la misma verdad, y por eso la razón puede demostrar por su cuenta los preámbulos de la fe —las cinco vías prueban la existencia de Dios desde la experiencia—, mientras que los misterios la superan sin contradecirla. Guillermo de Ockham, franciscano del siglo XIV, responde con la separación: los artículos de la fe no se pueden demostrar, la teología no es ciencia, y la razón queda libre para investigar la naturaleza sin tutela. La trayectoria importa más que cada posición: de la subordinación a la armonía, y de la armonía a una separación que abre el espacio donde nacerá la ciencia moderna. Que hoy distingamos sin esfuerzo lo que se cree de lo que se demuestra es herencia directa de este debate.</p>
 </blockquote>
-<p>La misma lista, con tres autores: cada uno con su época, su orden o su obra y su concepto propio, y la argumentación puesta en la trayectoria y no en el inventario. Fíjate además en que la cuestión no nombraba a nadie: los autores los pone la respuesta, y esa es la diferencia entre explicar un debate y enumerar lo que te suena de él. El material está en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-25" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 25">§25</a>-<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-28" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 28">§28</a> (tema 6).</p>
+<p>La misma lista, con tres autores: cada uno con su época, su orden o su obra y su concepto propio, y la argumentación puesta en la trayectoria y no en el inventario. Fíjate además en que la cuestión no nombraba a nadie: los autores los pone la respuesta, y esa es la diferencia entre explicar un debate y enumerar lo que te suena de él. El material está en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-25" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 25">§25</a>-<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-28" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 28">§28</a> (tema 6).</p>
 
 
 </section>
@@ -729,19 +741,131 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<!--
+  CORNISA MÓVIL (D259, 2026-11-20) · colección Areté
+  En pantallas estrechas Quarto ya pinta una barra superior fija con el hilo
+  de Ariadna: la parte y el título del tema. Al leer un tema largo en el móvil
+  eso no dice dónde estás. Este guion pone en esa misma barra el tema y el
+  apartado (§) que tienes delante, como la cornisa de un libro impreso, y lo
+  actualiza al hacer scroll.
+
+  Cómo: un IntersectionObserver vigila los h2 del cuerpo. Cada vez que uno
+  cruza la línea que hay a un quinto de la altura de la pantalla, la cornisa
+  toma el último h2 que ya ha pasado por encima de esa línea. La zona vigilada
+  empieza muy por encima de la pantalla, para que un scroll rápido que salta
+  un apartado entero también avise. No escucha cada píxel de scroll.
+
+  Dónde se ve: solo cuando la barra superior existe, que desde D259 es por
+  debajo de 768 px (custom.scss esconde la barra a partir de ese ancho,
+  porque ahí la barra lateral ya está fija). En escritorio no hace nada
+  visible. El aspecto —una o dos líneas recortadas con puntos suspensivos—
+  vive en custom.scss, sección «CORNISA MÓVIL».
+
+  Quarto pega este fichero al final de cada página (`include-after-body` en
+  los seis _quarto.yml); no se publica como fichero aparte. Ninguna sintaxis
+  nueva en el Markdown (D43).
+-->
+<script>
+(function () {
+  "use strict";
+  var barra = document.querySelector(".quarto-secondary-nav .container-fluid");
+  var cuerpo = document.getElementById("quarto-document-content");
+  var h1 = cuerpo && cuerpo.querySelector("header h1.title, h1.title");
+  if (!barra || !h1 || document.querySelector(".arete-portada")) return;
+
+  var texto = function (el) {
+    var c = el.cloneNode(true);
+    c.querySelectorAll(".anchorjs-link, .header-section-number").forEach(function (x) { x.remove(); });
+    return c.textContent.replace(/\s+/g, " ").trim();
+  };
+
+  var tema = texto(h1);
+  var titulos = Array.prototype.slice.call(cuerpo.querySelectorAll("section.level2 > h2"));
+
+  var cornisa = document.createElement("div");
+  cornisa.className = "arete-cornisa";
+  cornisa.setAttribute("aria-hidden", "true");   // el hilo de Ariadna de Quarto sigue ahí para los lectores de pantalla
+  var lineaTema = document.createElement("span");
+  lineaTema.className = "arete-cornisa__tema";
+  lineaTema.textContent = tema;
+  var lineaSeccion = document.createElement("span");
+  lineaSeccion.className = "arete-cornisa__seccion";
+  cornisa.appendChild(lineaTema);
+  cornisa.appendChild(lineaSeccion);
+
+  var hilo = barra.querySelector(".quarto-page-breadcrumbs");
+  barra.insertBefore(cornisa, hilo ? hilo.nextSibling : barra.firstChild.nextSibling);
+  document.body.classList.add("arete-con-cornisa");
+
+  var actual = null;
+  var pinta = function () {
+    var limite = window.innerHeight * 0.2, elegido = null;
+    for (var i = 0; i < titulos.length; i++) {
+      if (titulos[i].getBoundingClientRect().top <= limite) elegido = titulos[i];
+      else break;
+    }
+    if (elegido === actual) return;
+    actual = elegido;
+    lineaSeccion.textContent = elegido ? texto(elegido) : "";
+    cornisa.classList.toggle("arete-cornisa--seccion", !!elegido);
+  };
+
+  if (titulos.length && "IntersectionObserver" in window) {
+    var vigia = new IntersectionObserver(pinta, { rootMargin: "100000px 0px -80% 0px" });
+    titulos.forEach(function (t) { vigia.observe(t); });
+  }
+  window.addEventListener("hashchange", function () { setTimeout(pinta, 60); });
+  pinta();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Alternar modo oscuro");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Alternar modo oscuro");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -820,7 +944,8 @@ ul.task-list li input[type="checkbox"] {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -829,8 +954,69 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -844,6 +1030,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1006,44 +1193,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1142,7 +1339,10 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../chapters-web/capitulo-06.html" class="pagination-link" aria-label="La disertación">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">La disertación</span></span>

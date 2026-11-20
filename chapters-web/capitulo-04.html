@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,18 +40,19 @@ ul.task-list li input[type="checkbox"] {
 <link href="../chapters-web/capitulo-03.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fc20a56aadcab808120179de1ae02e97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-ee624aba7dd1a522a65201b5a843d75b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-fc20a56aadcab808120179de1ae02e97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b29469c5149ea663b658181c1cab893f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1eae7551a8b327b748a04a3a7b98b1fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b29469c5149ea663b658181c1cab893f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../quarto-theme/print.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Saltar al contenido principal</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -108,6 +109,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -137,13 +139,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -237,6 +245,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -251,13 +260,13 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Barra de herramientas">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-04.html"><span class="chapter-title">La comparación entre autores</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-04.html"><span class="chapter-title">La comparación entre autores</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -268,17 +277,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Sitio web"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p><a href="https://arete.eukeniacebal.net/es/">Areté</a></p>
+</div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Historia de la Filosofía</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://arete.eukeniacebal.net/es/" title="Colección Areté" class="quarto-navigation-tool px-1" aria-label="Colección Areté"><i class="bi bi-house-door"></i></a>
-    <a href="https://arete.eukeniacebal.net/usap/" title="Euskarazko bertsioa" class="quarto-navigation-tool px-1" aria-label="Euskarazko bertsioa"><i class="bi bi-translate"></i></a>
-    <a href="https://github.com/eukeni-acebal/pau/releases/latest/download/cuaderno-pau-filosofia.pdf" title="Descargar el PDF" class="quarto-navigation-tool px-1" aria-label="Descargar el PDF"><i class="bi bi-file-earmark-pdf"></i></a>
-    <a href="mailto:arete.eukeni@gmail.com?subject=Errata%20o%20sugerencia%20%C2%B7%20Cuaderno%20de%20la%20PAU" title="Avisar de una errata" class="quarto-navigation-tool px-1" aria-label="Avisar de una errata"><i class="bi bi-envelope"></i></a>
-    <a href="https://github.com/eukeni-acebal/pau" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro" aria-label="Alternar modo oscuro"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -302,12 +308,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte I · La prueba</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Parte I · La prueba</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección: Parte I · La prueba">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cómo funciona la prueba</span></a>
@@ -323,12 +329,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte II · Métodos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Parte II · Métodos</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección: Parte II · Métodos">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El resumen y la estructura argumental</span></a>
@@ -359,12 +365,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte III · Las cinco lecturas</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Parte III · Las cinco lecturas</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección: Parte III · Las cinco lecturas">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/capitulo-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Platón: <em>República</em>, libro VII</span></a>
@@ -395,12 +401,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte IV · Aparato comparativo</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Parte IV · Aparato comparativo</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección: Parte IV · Aparato comparativo">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/cross-bloque.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Comparar a través de los bloques</span></a>
@@ -416,12 +422,12 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../parte-5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Parte V · Exámenes resueltos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Parte V · Exámenes resueltos</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección: Parte V · Exámenes resueltos">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters-web/examen-ordinaria-2026.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">La ordinaria de 2026, resuelta y comentada</span></a>
@@ -446,11 +452,17 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-</nav>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<ul>
+<li><a href="https://arete.eukeniacebal.net/usap/" lang="eu" hreflang="eu">Euskaraz</a></li>
+<li><a href="https://github.com/eukeni-acebal/pau/releases/latest/download/cuaderno-pau-filosofia.pdf">Descargar PDF</a></li>
+<li><a href="mailto:arete.eukeni@gmail.com?subject=Errata%20o%20sugerencia%20%C2%B7%20Cuaderno%20de%20la%20PAU">Escríbeme</a></li>
+</ul>
+</div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul class="collapse">
@@ -465,10 +477,10 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-04.html"><span class="chapter-title">La comparación entre autores</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Hilo de Ariadna"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte-2.html">Parte II · Métodos</a></li><li class="breadcrumb-item"><a href="../chapters-web/capitulo-04.html"><span class="chapter-title">La comparación entre autores</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">La comparación entre autores</span></h1>
 </div>
@@ -493,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="qué-pide-exactamente-la-pregunta">Qué pide exactamente la pregunta</h2>
 <p><strong>Que pongas dos posiciones a dialogar sobre un mismo problema.</strong> Y conviene que veas enseguida lo que <em>no</em> es, porque el error de partida es tan frecuente que casi es la norma: exponer al autor del texto y, a continuación, exponer al otro. Dos exposiciones seguidas no son una comparación por muy correctas que sean las dos. Falta lo único que la pregunta valora, que es el cruce. Comparar es identificar el problema del que ambos hablan, poner una tesis frente a la otra y explicar en qué se separan y por qué.</p>
 <p><strong>Y hay tres cosas que no te piden.</strong> No te piden biografía. No te piden la corriente entera del autor con el que comparas. Y no te piden tu opinión personal en primera persona: eso es la disertación, y se corrige con otra rúbrica (capítulo 6). Aquí la rúbrica mira cinco ejes —comprensión, calidad de la comparación, vocabulario filosófico, estructura argumentativa y gramática—, y el adjetivo que separa la banda alta de la media es <em>crítica</em>: piden una comparación «crítica, matizada y filosóficamente significativa» (capítulo 2).</p>
-<p><strong>Cuatro enunciados conocidos, y dos maneras distintas de preguntar.</strong> De la prueba vigente conocemos cuatro 1.2.A: las de los dos modelos oficiales y las de las dos convocatorias de 2026 <a href="capitulo-04.html#tbl-cuatro-12a-conocidas">Tabla 4</a>. Míralas con atención, porque no todas preguntan igual.</p>
+<p><strong>Cuatro enunciados conocidos, y dos maneras distintas de preguntar.</strong> De la prueba vigente conocemos cuatro 1.2.A: las de los dos modelos oficiales y las de las dos convocatorias de 2026 <a href="../chapters-web/capitulo-04.html#tbl-cuatro-12a-conocidas">Tabla 4</a>. Míralas con atención, porque no todas preguntan igual.</p>
 <span id="tbl-cuatro-12a-conocidas" class="tbl-ancla"></span>
 <table class="caption-top table">
 <caption>Las cuatro 1.2.A conocidas: dos enunciados dan nombres y dos dan un tema.</caption>
@@ -538,7 +550,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p><strong>Y ahora fíjate en la última fila, que enseña la lección más útil del capítulo.</strong> La extraordinaria de 2026 pidió el papel de la mujer en la cultura y la filosofía griega y medieval. ¿Dónde está eso en los cinco textos que trabajas? En ninguno: ni Platón, ni Descartes, ni Kant, ni Nietzsche, ni Beauvoir tratan ese asunto en los tramos que la prueba usa. Quien solo hubiera preparado las cinco lecturas se quedó mirando el papel en blanco. El material estaba en el manual —Hipatia de Alejandría en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-05.html#sec-24" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 24">§24</a> (tema 5), Hildegard von Bingen en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-06.html#sec-29" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 29">§29</a> (tema 6)—, y de ahí sale la conclusión práctica: la despensa de esta pregunta no es este cuaderno, es el <em>manual</em>. Aquí aprendes el procedimiento; el contenido con el que lo llenas lo estudiaste durante el curso.</p>
+<p><strong>Y ahora fíjate en la última fila, que enseña la lección más útil del capítulo.</strong> La extraordinaria de 2026 pidió el papel de la mujer en la cultura y la filosofía griega y medieval. ¿Dónde está eso en los cinco textos que trabajas? En ninguno: ni Platón, ni Descartes, ni Kant, ni Nietzsche, ni Beauvoir tratan ese asunto en los tramos que la prueba usa. Quien solo hubiera preparado las cinco lecturas se quedó mirando el papel en blanco. El material estaba en el manual —Hipatia de Alejandría en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-05.html#sec-24" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 24">§24</a> (tema 5), Hildegard von Bingen en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-06.html#sec-29" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 29">§29</a> (tema 6)—, y de ahí sale la conclusión práctica: la despensa de esta pregunta no es este cuaderno, es el <em>manual</em>. Aquí aprendes el procedimiento; el contenido con el que lo llenas lo estudiaste durante el curso.</p>
 </section>
 <section id="lo-que-cambió-en-2026-el-destino-lo-eliges-tú" class="level2">
 <h2 class="anchored" data-anchor-id="lo-que-cambió-en-2026-el-destino-lo-eliges-tú">Lo que cambió en 2026: el destino lo eliges tú</h2>
@@ -558,12 +570,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Si sabes el autor del texto, entra por «Comparar a través de los bloques».</strong> Está en la Parte IV, unas páginas más adelante, organizado por los cinco autores de lectura: para cada uno te da las salidas que su texto admite, con el problema que abre cada una. Es el atajo cuando el enunciado no te nombra el problema. Ahí encontrarás también el procedimiento en cuatro pasos, que no se repite aquí porque está bien donde está.</p>
 <p><strong>Si sabes el problema, entra por «Perspectivas enfrentadas».</strong> Ese es el apéndice que cierra el manual, después del tema 22, y está organizado por preguntas —¿cómo conocemos?, ¿somos libres o estamos determinados?, ¿sexo o género?—: cada una trae las dos posiciones opuestas, la vía media cuando existe y una pista para actualizar el problema al presente. Localiza tu pregunta en el cuadro de conjunto y lee debajo el debate desarrollado: ahí tienes las dos tesis ya enfrentadas, que es la mitad del trabajo.</p>
 <p><strong>Que la segunda puerta esté en el otro libro te dice algo del examen.</strong> Los veintiún debates de ese apéndice son filosofía y seguirían siendo verdad aunque la prueba no existiera, así que viven donde vive la filosofía. Este cuaderno no los copia: te dice cuándo abrir esa página y qué buscar en ella. Es la misma división de trabajo que ya viste con Hipatia y Hildegard, y vas a encontrártela en todo el libro.</p>
-<p><strong>De las dos puertas se sale al mismo sitio.</strong> Los números <code>§</code> que verás en una y en otra son secciones del manual, y ahí es donde cada posición está desarrollada de verdad. Este cuaderno los cita con el autor y el tema al lado —«<a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-39" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 39">§39</a> (Hume, tema 9)»— para que los encuentres sin pelearte con el índice. Ese es el recorrido completo: el cuaderno te dice <em>qué</em> comparar y <em>cómo</em>; el manual te da <em>con qué</em>.</p>
+<p><strong>De las dos puertas se sale al mismo sitio.</strong> Los números <code>§</code> que verás en una y en otra son secciones del manual, y ahí es donde cada posición está desarrollada de verdad. Este cuaderno los cita con el autor y el tema al lado —«<a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-09.html#sec-39" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 39">§39</a> (Hume, tema 9)»— para que los encuentres sin pelearte con el índice. Ese es el recorrido completo: el cuaderno te dice <em>qué</em> comparar y <em>cómo</em>; el manual te da <em>con qué</em>.</p>
 <p><strong>Y cuando ninguna de las dos llegue.</strong> Llegará ese momento, así que más vale que sepas qué hacer. La 1.2.A de la extraordinaria de 2026 —la mujer en la filosofía griega y medieval— no aparece en ninguna de las dos, y no por descuido: ningún repertorio cubre todo lo que un enunciado puede pedir. El recurso entonces es el índice del manual, y funciona porque el enunciado casi siempre te acota una época —«griega y medieval», «en la filosofía moderna»— y el manual está ordenado justamente así, por partes y por temas. Vete a la parte que te nombran y busca dentro. Que el repertorio se quede corto alguna vez es la prueba de que no es un pronóstico.</p>
 </section>
 <section id="del-método-al-papel-las-250-palabras" class="level2">
 <h2 class="anchored" data-anchor-id="del-método-al-papel-las-250-palabras">Del método al papel: las 250 palabras</h2>
-<p>Doscientas cincuenta palabras son pocas, y es el único límite duro de todo el examen. Aquí se pierden más puntos por mala administración que por ignorancia: gente que sabe de sobra y llega al final sin haber cruzado nada porque gastó ciento veinte palabras presentando a Kant. Lleva el reparto decidido de casa <a href="capitulo-04.html#tbl-reparto-de-las-250-palabras">Tabla 5</a>.</p>
+<p>Doscientas cincuenta palabras son pocas, y es el único límite duro de todo el examen. Aquí se pierden más puntos por mala administración que por ignorancia: gente que sabe de sobra y llega al final sin haber cruzado nada porque gastó ciento veinte palabras presentando a Kant. Lleva el reparto decidido de casa <a href="../chapters-web/capitulo-04.html#tbl-reparto-de-las-250-palabras">Tabla 5</a>.</p>
 <span id="tbl-reparto-de-las-250-palabras" class="tbl-ancla"></span>
 <table class="caption-top table">
 <caption>El reparto de las 250 palabras: un presupuesto orientativo, no una plantilla rígida.</caption>
@@ -634,30 +646,142 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>El texto sitúa el origen del conocimiento enteramente del lado del sujeto que piensa. Descartes puede fingir que no tiene cuerpo y que no hay mundo, pero no que no piensa; y de esa única certeza que resiste la ficción extrae la regla general de que es verdadero todo lo que se concibe «clara y distintamente», un criterio que no le pide nada a la experiencia. Kant comparte el giro hacia el sujeto —también para él las condiciones del conocer están en quien conoce— pero le impone un límite que Descartes no aceptaría: el sujeto pone la <em>forma</em> del conocimiento, esto es, el espacio, el tiempo y las categorías, pero nunca su <em>contenido</em>, que ha de venir de la experiencia. «Los pensamientos sin contenido son vacíos; las intuiciones sin conceptos, ciegas». De ahí sale una crítica directa al paso decisivo del texto: cuando Descartes concluye que es «una sustancia cuya esencia y naturaleza toda es pensar», está aplicando la categoría de sustancia más allá de toda experiencia posible, y eso es justamente lo que Kant declara ilegítimo. Del «pienso» se sigue que hay una unidad que acompaña a mis representaciones, no que yo sea una cosa pensante e independiente del cuerpo. Kant continúa a Descartes y lo recorta a la vez: le conserva el giro al sujeto y le retira la metafísica que había fundado sobre él.</p>
 </blockquote>
-<p>Poco más de doscientas veinte palabras. Mira dónde está el peso: el cruce ocupa más que las dos tesis juntas, y no se limita a decir que discrepan, sino que localiza el punto exacto de la discrepancia —la aplicación de la categoría de sustancia— y lo cita del texto. El material para prepararla está en <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-36" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 36">§36</a> (Descartes, tema 8) y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a> (Kant, tema 12).</p>
+<p>Poco más de doscientas veinte palabras. Mira dónde está el peso: el cruce ocupa más que las dos tesis juntas, y no se limita a decir que discrepan, sino que localiza el punto exacto de la discrepancia —la aplicación de la categoría de sustancia— y lo cita del texto. El material para prepararla está en <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-36" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 36">§36</a> (Descartes, tema 8) y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-12.html#sec-50" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 50">§50</a> (Kant, tema 12).</p>
 <p><strong>Segunda: el destino elegido (Hume)</strong></p>
 <blockquote class="blockquote">
 <p>Elijo a Hume, que el enunciado no nombra, porque es quien discute el punto exacto del texto: si el conocimiento nace de la razón o de la experiencia. Descartes levanta su certeza sin salir del pensamiento —puede fingir que no hay mundo y aun así sabe que es— y hace de la claridad y la distinción el criterio de toda verdad. Hume invierte el orden: nada hay en la mente que no proceda de una impresión anterior, y cada idea vale exactamente lo que valga la experiencia de la que nace. Aplicado a este texto, el resultado es demoledor en dos puntos. El primero, la sustancia: Descartes concluye que es «una sustancia cuya esencia toda es pensar», pero de una sustancia no tenemos impresión alguna, solo del haz de cualidades que le atribuimos. El segundo, el yo: cuando Hume mira hacia dentro buscando ese yo permanente, no encuentra más que percepciones sucediéndose —un frío, una luz, un deseo—, nunca a quien las tiene; el «yo» de la primera certeza cartesiana sería entonces una ficción útil cosida por la memoria. La comparación no enfrenta dos escuelas: enfrenta un fundamento y su disolución. Y ninguno convencería al otro, porque su desacuerdo es previo: discrepan sobre qué cuenta como prueba.</p>
 </blockquote>
-<p>Poco más de doscientas palabras, y las veintiocho primeras son la justificación de la elección. Compensa: dejan claro desde la línea uno que detrás hay un criterio y no una casualidad. Para prepararla tienes en el manual <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-34" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 34">§34</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-08.html#sec-36" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 36">§36</a> (Descartes, tema 8), <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-38" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 38">§38</a> y <a href="https://eukeni-acebal.github.io/hf/chapters-web/tema-09.html#sec-39" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 39">§39</a> (Hume, tema 9), y la tabla «Racionalismo y empirismo», que enfrenta las dos corrientes criterio a criterio y es, ella sola, el esqueleto de una respuesta a esta pregunta.</p>
+<p>Poco más de doscientas palabras, y las veintiocho primeras son la justificación de la elección. Compensa: dejan claro desde la línea uno que detrás hay un criterio y no una casualidad. Para prepararla tienes en el manual <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-34" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 34">§34</a> y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-08.html#sec-36" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 36">§36</a> (Descartes, tema 8), <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-09.html#sec-38" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 38">§38</a> y <a href="https://arete.eukeniacebal.net/hf/chapters-web/tema-09.html#sec-39" class="ref-manual" target="_blank" rel="noopener" title="Manual de Historia de la Filosofía, sección 39">§39</a> (Hume, tema 9), y la tabla «Racionalismo y empirismo», que enfrenta las dos corrientes criterio a criterio y es, ella sola, el esqueleto de una respuesta a esta pregunta.</p>
 
 
 </section>
 
 </main> <!-- /main -->
+<!--
+  CORNISA MÓVIL (D259, 2026-11-20) · colección Areté
+  En pantallas estrechas Quarto ya pinta una barra superior fija con el hilo
+  de Ariadna: la parte y el título del tema. Al leer un tema largo en el móvil
+  eso no dice dónde estás. Este guion pone en esa misma barra el tema y el
+  apartado (§) que tienes delante, como la cornisa de un libro impreso, y lo
+  actualiza al hacer scroll.
+
+  Cómo: un IntersectionObserver vigila los h2 del cuerpo. Cada vez que uno
+  cruza la línea que hay a un quinto de la altura de la pantalla, la cornisa
+  toma el último h2 que ya ha pasado por encima de esa línea. La zona vigilada
+  empieza muy por encima de la pantalla, para que un scroll rápido que salta
+  un apartado entero también avise. No escucha cada píxel de scroll.
+
+  Dónde se ve: solo cuando la barra superior existe, que desde D259 es por
+  debajo de 768 px (custom.scss esconde la barra a partir de ese ancho,
+  porque ahí la barra lateral ya está fija). En escritorio no hace nada
+  visible. El aspecto —una o dos líneas recortadas con puntos suspensivos—
+  vive en custom.scss, sección «CORNISA MÓVIL».
+
+  Quarto pega este fichero al final de cada página (`include-after-body` en
+  los seis _quarto.yml); no se publica como fichero aparte. Ninguna sintaxis
+  nueva en el Markdown (D43).
+-->
+<script>
+(function () {
+  "use strict";
+  var barra = document.querySelector(".quarto-secondary-nav .container-fluid");
+  var cuerpo = document.getElementById("quarto-document-content");
+  var h1 = cuerpo && cuerpo.querySelector("header h1.title, h1.title");
+  if (!barra || !h1 || document.querySelector(".arete-portada")) return;
+
+  var texto = function (el) {
+    var c = el.cloneNode(true);
+    c.querySelectorAll(".anchorjs-link, .header-section-number").forEach(function (x) { x.remove(); });
+    return c.textContent.replace(/\s+/g, " ").trim();
+  };
+
+  var tema = texto(h1);
+  var titulos = Array.prototype.slice.call(cuerpo.querySelectorAll("section.level2 > h2"));
+
+  var cornisa = document.createElement("div");
+  cornisa.className = "arete-cornisa";
+  cornisa.setAttribute("aria-hidden", "true");   // el hilo de Ariadna de Quarto sigue ahí para los lectores de pantalla
+  var lineaTema = document.createElement("span");
+  lineaTema.className = "arete-cornisa__tema";
+  lineaTema.textContent = tema;
+  var lineaSeccion = document.createElement("span");
+  lineaSeccion.className = "arete-cornisa__seccion";
+  cornisa.appendChild(lineaTema);
+  cornisa.appendChild(lineaSeccion);
+
+  var hilo = barra.querySelector(".quarto-page-breadcrumbs");
+  barra.insertBefore(cornisa, hilo ? hilo.nextSibling : barra.firstChild.nextSibling);
+  document.body.classList.add("arete-con-cornisa");
+
+  var actual = null;
+  var pinta = function () {
+    var limite = window.innerHeight * 0.2, elegido = null;
+    for (var i = 0; i < titulos.length; i++) {
+      if (titulos[i].getBoundingClientRect().top <= limite) elegido = titulos[i];
+      else break;
+    }
+    if (elegido === actual) return;
+    actual = elegido;
+    lineaSeccion.textContent = elegido ? texto(elegido) : "";
+    cornisa.classList.toggle("arete-cornisa--seccion", !!elegido);
+  };
+
+  if (titulos.length && "IntersectionObserver" in window) {
+    var vigia = new IntersectionObserver(pinta, { rootMargin: "100000px 0px -80% 0px" });
+    titulos.forEach(function (t) { vigia.observe(t); });
+  }
+  window.addEventListener("hashchange", function () { setTimeout(pinta, 60); });
+  pinta();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Alternar modo oscuro");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Alternar modo oscuro");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -736,7 +860,8 @@ ul.task-list li input[type="checkbox"] {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -745,8 +870,69 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -760,6 +946,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -922,44 +1109,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1058,7 +1255,10 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Código desplazable","output":"Salida desplazable"};
+  </script>
+<nav class="page-navigation" aria-label="Página">
   <div class="nav-page nav-page-previous">
       <a href="../chapters-web/capitulo-03.html" class="pagination-link" aria-label="El resumen y la estructura argumental">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">El resumen y la estructura argumental</span></span>
